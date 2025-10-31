@@ -1,4 +1,3 @@
-```markdown
 # Cloudflare Worker: 路径镜像与域名/Cookie 重写
 
 简短概括（Summary）
