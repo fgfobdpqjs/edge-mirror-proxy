@@ -1,4 +1,4 @@
-（除了这段文字以外，其他均由copilot生成，项目名也是，而且copilot没列全，请去查看(worker.js)[https://github.com/fgfobdpqjs/edge-mirror-proxy/blob/main/worker.js]的注释）
+（除了这段文字以外，其他均由copilot生成，项目名也是，而且copilot没列全，请去查看[worker.js](https://github.com/fgfobdpqjs/edge-mirror-proxy/blob/main/worker.js)的注释）
 
 # Cloudflare Worker: 路径镜像与域名/Cookie 重写
 
