@@ -10,6 +10,10 @@
 - 重写 `Location` 头并使用 `HTMLRewriter` 替换 HTML 中的常见资源 URL；
 - 对非 HTML 头部字段做保守的字符串替换以修正指向外部域的预加载或资源引用。
 
+重要免责声明
+------------
+本项目仅供学习使用。请勿在未获授权的情况下镜像或修改第三方站点内容；对用户数据与隐私的任何处理请自行负责并遵守相关法律法规。
+
 标签（Tags）
 ------------
 - cloudflare
@@ -27,6 +31,7 @@
 --------
 - worker.js — 主 Worker 脚本（包含 HOST_MAP 与 COOKIE_DOMAIN_MAP 配置）
 - README.md — 本说明文档（包括配置说明、快速开始、测试与注意事项）
+- LICENSE — 项目许可文件（MIT License）
 
 配置片段示例（你常用的展示方式）
 --------------------------------
@@ -57,7 +62,7 @@ const COOKIE_DOMAIN_MAP = {
   - key：原始 host（如 "github.com"）
   - value：替换后的 host（如 "facebook.com"）
   - 可包含端口，例如 "api.example.com:8443"
-- 风险/注意：
+- 注意：
   - 只替换 host，不自动修改 path 或协议。
   - 仅影响静态 HTML 与头部。JS 运行时动态构造的 URL（fetch/XHR）不会被自动替换，除非你对 JS 文本做额外替换（有风险）。
   - 替换目标必须能提供相同资源，否则资源会 404 或因证书/跨域问题加载失败。
@@ -69,7 +74,7 @@ const COOKIE_DOMAIN_MAP = {
 - 配置方式：
   - key：上游 cookie 的原始域（如 "zrf.me"）
   - value：替换目标域（如 "expmale.com"），或空字符串 `""` 表示移除 `domain=` 子串
-- 风险/注意：
+- 注意：
   - Cookie 属性（Secure、SameSite、Path 等）会影响浏览器是否接受或发送 cookie。Secure 需要 HTTPS；SameSite 可能阻止跨站发送。
   - 变更 cookie domain 有安全与法律影响：请确保你有权这么做并妥善保护用户数据。
 
@@ -96,10 +101,9 @@ const COOKIE_DOMAIN_MAP = {
 - Cookie 未生效：检查 Secure/Path/SameSite 以及浏览器控制台的 cookie 错误。
 - 资源 404 或证书错误：host 替换后目标域可能没有相应资源或 TLS 不匹配，需确保目标 host 可访问相同资源。
 
-安全与合规提醒
-----------------
-- 不要在未获授权下镜像或修改第三方站点内容，这可能违反服务条款或法律。
-- 修改 cookie 的 domain 会影响用户隐私和安全，请谨慎操作并遵循相关法规与政策。
+安全与合规提醒（显著）
+----------------------
+本项目仅供学习使用。请勿在未获授权的情况下镜像或修改第三方站点内容；对用户数据与隐私的任何处理请自行负责并遵守相关法律法规。
 
 进阶建议（可选）
 ----------------
@@ -120,3 +124,7 @@ const COOKIE_DOMAIN_MAP = {
 - 测试/调试工具（非代码依赖，仅建议）
   - curl（用于命令行测试）
   - 浏览器 DevTools（用于网络与 Cookie 调试）
+
+LICENSE
+-------
+本项目使用 MIT 许可证（LICENSE 文件位于仓库根目录）。
